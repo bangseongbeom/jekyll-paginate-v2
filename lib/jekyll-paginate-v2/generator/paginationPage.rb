@@ -56,8 +56,9 @@ module Jekyll
       end
 
       def output_ext
-        url_ext = File.extname(url)
-        url_ext.empty? ? super : url_ext
+        ext = File.extname(url)
+        ext = File.extname(@name) if ext.empty?
+        ext.empty? ? super : ext
       end
     end # class PaginationPage
 
