@@ -54,6 +54,11 @@ module Jekyll
       def relative_path
         @relative_path || super
       end
+
+      def output_ext
+        url_ext = File.extname(url)
+        url_ext.empty? ? super : url_ext
+      end
     end # class PaginationPage
 
   end # module PaginateV2
