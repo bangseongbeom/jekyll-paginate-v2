@@ -69,6 +69,12 @@ module Jekyll::PaginateV2::Generator
       Utils.ensure_full_path("/feed/:num", "feed", ".json").must_equal "/feed/:num.json"
     end
 
+    it "should only look at the last path segment when checking for an extension" do
+      Utils.ensure_full_path("/v1.0/page:num", "index", ".html").must_equal "/v1.0/page:num.html"
+      Utils.ensure_full_path("/v1.0/page:num.html", "index", ".html").must_equal "/v1.0/page:num.html"
+      Utils.ensure_full_path("/v1.0/page:num/", "index", ".html").must_equal "/v1.0/page:num/index.html"
+    end
+
 
   end
 end
