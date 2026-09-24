@@ -128,7 +128,7 @@ module Jekyll
       def self.ensure_full_path(url, default_index, default_ext)
         if( url.end_with?('/'))
           return url + default_index + default_ext
-        elsif !url.include?('.')
+        elsif File.extname(url).empty?
           return url + default_ext
         end
         # Default
